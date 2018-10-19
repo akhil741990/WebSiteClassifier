@@ -1,2 +1,3 @@
 https://www.sciencedirect.com/science/article/pii/S0957417407004253
 
+https://examples.javacodegeeks.com/enterprise-java/hibernate/hibernate-tutorial-beginners-examples/
