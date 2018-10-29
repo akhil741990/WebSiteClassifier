@@ -54,15 +54,7 @@ public class WebPageDataCollector {
 	
 	public static void main(String args[]) throws Exception{
 	
-		ArrayList<String> websites = new ArrayList<>();
-		websites.add("https://www.flipkart.com");
-		websites.add("https://www.amazon.com");
-		websites.add("https://www.infibeam.com");
-		websites.add("https://www.ebay.com/");
-		websites.add("https://www.walmart.com/");
-		websites.add("https://www.target.com/");
-		websites.add("https://www.overstock.com/");
-		websites.add("https://www.newegg.com/");
+		List<String> websites = FileOperations.getWebSiteList("/home/apillai44/soul/WebSiteClassifier/data/websites/ecommerce.txt");
 		WebPageDataCollector.fetchData(websites, "/home/apillai44/soul/WebSiteClassifier/data/ecommerce/");
 	}
 	
