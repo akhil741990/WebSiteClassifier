@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 import numpy as np
 import pickle
@@ -9,7 +10,7 @@ import sklearn.datasets as skds
 from pathlib import Path
 
 
-trainPath = "/home/akhil/workspace/website-classification/data/train";
+trainPath = "/home/akhil/ML/WebSiteClassifier/website-classification/data/train";
 
 
 files_train = skds.load_files(trainPath,load_content=False);
@@ -19,6 +20,14 @@ file_index = files_train.target;
 file_labels  = files_train.target_names;
 file_names   = files_train.filenames;
 
+for i in range(len(file_names)):
+    if file_labels[file_index[i]] not in file_names[i]:
+        print("i:",i);
+        print("file_labels:",file_labels[file_index[i]]);
+        print("file_names:", file_names[i]);
+        
+
+    
 # print("index:",file_index);
 # print("file_lables:",file_labels);
 # print("file_names:", file_names);
@@ -29,15 +38,27 @@ data_list = []
 i = 0;
 for f in file_names :
     try:
+        if file_labels[file_index[i]] not in f:
+            print("i:",i);
+            print("file_labels:",file_labels[file_index[i]]);
+            print("file_names:", f);
         data_list.append((f,file_labels[file_index[i]],Path(f).read_text()))
-        i = i +1
     except:
         pass    
-    
+    i = i +1;
+        
 #print("data_list : ", data_list);
 
 data = pd.DataFrame.from_records(data_list, columns=data_tags)    
 
+
+# for i in range(len(file_names)):
+#     if data["category"][i] not in data["filename"][i]:
+#         print("i:",i);
+#         print("file_labels:",data["category"][i]);
+#         print("file_names:", data["filename"][i]);
+#     
+# sys.exit(1);
 
 train_size = int(len(data) * 0.8);
 
@@ -69,7 +90,12 @@ y_train = encoder.transform(train_category)
 y_test = encoder.transform(test_category)
 
 
-
+# for i in range(len(train_filename)):
+#     print("train file :",train_filename.iloc[i]);
+#     print("train file label:",train_category.iloc[i]);
+# 
+# 
+# sys.exit(0);
 
 #build model
 
