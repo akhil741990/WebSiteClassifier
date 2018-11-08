@@ -47,15 +47,15 @@ public class WebPageDataCollector {
 			response.append(inputLine);
 		}
 		in.close();
- 
+		con.disconnect();
 		//System.out.println("Response : "+ response.toString());
 		return response.toString();
 	}	
 	
 	public static void main(String args[]) throws Exception{
 	
-		List<String> websites = FileOperations.getWebSiteList("/home/apillai44/soul/WebSiteClassifier/data/websites/sports.txt");
-		WebPageDataCollector.fetchData(websites, "/home/apillai44/soul/WebSiteClassifier/data/sports/");
+		List<String> websites = FileOperations.getWebSiteList("/home/apillai44/soul/WebSiteClassifier/data/websites/ecommerce.txt");
+		WebPageDataCollector.fetchData(websites, "/home/apillai44/soul/WebSiteClassifier/data/ecommerce/");
 	}
 	
 	private static void persistFetchedContent(String httpBody, String path) {
