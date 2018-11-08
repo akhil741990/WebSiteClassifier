@@ -38,7 +38,9 @@ public class FileOperations {
 			String line = reader.readLine();
 			while(line!=null) {
 				System.out.println("website :"+line);
+				
 				websites.add(line);
+				line = reader.readLine();
 			}
 			reader.close();
 		} catch (IOException e) {

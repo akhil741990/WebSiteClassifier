@@ -54,8 +54,8 @@ public class WebPageDataCollector {
 	
 	public static void main(String args[]) throws Exception{
 	
-		List<String> websites = FileOperations.getWebSiteList("/home/apillai44/soul/WebSiteClassifier/data/websites/ecommerce.txt");
-		WebPageDataCollector.fetchData(websites, "/home/apillai44/soul/WebSiteClassifier/data/ecommerce/");
+		List<String> websites = FileOperations.getWebSiteList("/home/apillai44/soul/WebSiteClassifier/data/websites/sports.txt");
+		WebPageDataCollector.fetchData(websites, "/home/apillai44/soul/WebSiteClassifier/data/sports/");
 	}
 	
 	private static void persistFetchedContent(String httpBody, String path) {
@@ -67,10 +67,18 @@ public class WebPageDataCollector {
 	private static void generateMLdata(String url, String path) {
 		try {
 			String httpBody = getWebPageContent(url);
-			String websiteName = url.split("www.")[1].split("\\.")[0];
+			String websiteName;
+			if(!url.contains("www")) {
+				websiteName = url.split("://")[1].split("\\.")[0];
+			}else {
+				websiteName = url.split("www.")[1].split("\\.")[0];
+			}
+
 			persistFetchedContent(httpBody, path + websiteName + ".txt");
 		} catch (Exception e) {
 			System.out.println("Exception :"+e.getMessage());
+			e.printStackTrace();
+			System.out.println("=====End of Exception");
 		}
 	}
 	
