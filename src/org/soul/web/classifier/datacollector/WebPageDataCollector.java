@@ -54,8 +54,8 @@ public class WebPageDataCollector {
 	
 	public static void main(String args[]) throws Exception{
 	
-		List<String> websites = FileOperations.getWebSiteList("/home/apillai44/soul/WebSiteClassifier/data/websites/ecommerce.txt");
-		WebPageDataCollector.fetchData(websites, "/home/apillai44/soul/WebSiteClassifier/data/ecommerce/");
+		List<String> websites = FileOperations.getWebSiteList("/home/apillai44/soul/WebSiteClassifier/data/websites/news.txt");
+		WebPageDataCollector.fetchData(websites, "/home/apillai44/soul/WebSiteClassifier/data/news/");
 	}
 	
 	private static void persistFetchedContent(String httpBody, String path) {
