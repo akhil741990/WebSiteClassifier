@@ -20,11 +20,11 @@ file_index = files_train.target;
 file_labels  = files_train.target_names;
 file_names   = files_train.filenames;
 
-for i in range(len(file_names)):
-    if file_labels[file_index[i]] not in file_names[i]:
-        print("i:",i);
-        print("file_labels:",file_labels[file_index[i]]);
-        print("file_names:", file_names[i]);
+# for i in range(len(file_names)):
+#     if file_labels[file_index[i]] not in file_names[i]:
+#         print("i:",i);
+#         print("file_labels:",file_labels[file_index[i]]);
+#         print("file_names:", file_names[i]);
         
 
     
@@ -38,10 +38,10 @@ data_list = []
 i = 0;
 for f in file_names :
     try:
-        if file_labels[file_index[i]] not in f:
-            print("i:",i);
-            print("file_labels:",file_labels[file_index[i]]);
-            print("file_names:", f);
+#         if file_labels[file_index[i]] not in f:
+#             print("i:",i);
+#             print("file_labels:",file_labels[file_index[i]]);
+#             print("file_names:", f);
         data_list.append((f,file_labels[file_index[i]],Path(f).read_text()))
     except:
         pass    
@@ -136,3 +136,4 @@ for i in range(5):
     print("Predicted label: " + predicted_label)
 print("End")
 
+model.save('model.textclassifier')
